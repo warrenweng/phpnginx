@@ -75,7 +75,8 @@ done
 #需要替换文件(2)
 cp /root/frp-base/client_config/fpc.ini /root/frp-base/client_config/fpc-$blockname.ini;
 
-sed  -i  's/\$blockname/'$blockname'/g'  /root/frp-base/client_config/fpc-$blockname.ini;
+#加上主机名字作为区别，这样可以进行负载均衡
+sed  -i  's/\$blockname/'$blockname'-'$HOSTNAME'/g'  /root/frp-base/client_config/fpc-$blockname.ini;
 sed  -i  's/\$custom_domains/'$custom_domains'/g'  /root/frp-base/client_config/fpc-$blockname.ini;
 sed  -i  's/\$type/'$type'/g'  /root/frp-base/client_config/fpc-$blockname.ini;
 sed  -i  's/\$server_addr/'$server_addr'/g'  /root/frp-base/client_config/fpc-$blockname.ini;
