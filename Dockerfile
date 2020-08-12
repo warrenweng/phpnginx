@@ -1,5 +1,5 @@
 #借助docker-hub镜像编译。 镜像名字为： xltxlm/phpnginx
-FROM php:7.3-fpm-buster
+FROM php:7.3.21-fpm-buster
 
 COPY / /root/
 
