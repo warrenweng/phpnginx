@@ -12,7 +12,7 @@ RUN  apt-get update && apt-get -y install  vim  bc dnsutils tree  openssh-server
 RUN  cd /root/frp-base/ && wget https://oss.xialintai.com/soft/frp_0.30.0_linux_amd64.tar.gz && tar xzf frp_0.30.0_linux_amd64.tar.gz && chmod +x /root/frp-base/client.sh
 
 #php扩展安装
-RUN     apt-get update && apt-get -y install  libzip-dev  git librdkafka-dev unzip  zlib1g-dev vim libldap2-dev libmagickwand-dev  \
+RUN     apt-get update && apt-get -y install  libzip-dev  git librdkafka-dev unzip  zlib1g-dev vim libldap2-dev libmagickwand-dev libjpeg-dev  \
         && ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so \
         && /usr/local/bin/docker-php-ext-install mysqli bcmath  pdo_mysql zip pcntl ldap exif xmlrpc \
         && apt-get -y install libcurl4-openssl-dev pkg-config libssl-dev net-tools strace psmisc librabbitmq-dev \
@@ -25,7 +25,9 @@ RUN     apt-get update && apt-get -y install  libzip-dev  git librdkafka-dev unz
             libmcrypt-dev \
             libpng-dev \
             libxpm-dev \
-        && docker-php-ext-install gd
+        && docker-php-ext-configure gd  --with-freetype-dir=/usr/include/freetype2  --with-png-dir=/usr/include  --with-jpeg-dir=/usr/include \
+        && docker-php-ext-install gd \
+        && docker-php-ext-enable gd
 
 #
 RUN     cd /root/ &&  tar -xzf /root/donkeyid-donkeyid-1.0.tar.gz && cd /root/donkeyid-donkeyid-1.0/donkeyid/  \
