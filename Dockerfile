@@ -14,9 +14,11 @@ RUN  cd /root/frp-base/ && wget https://oss.xialintai.com/soft/frp_0.30.0_linux_
 #php扩展安装
 RUN     apt-get update && apt-get -y install  libzip-dev  git librdkafka-dev unzip  zlib1g-dev vim libldap2-dev libmagickwand-dev  \
         && ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so \
-        && /usr/local/bin/docker-php-ext-install  pdo_mysql zip pcntl ldap exif xmlrpc \
+        && /usr/local/bin/docker-php-ext-install mysqli bcmath  pdo_mysql zip pcntl ldap exif xmlrpc \
         && apt-get -y install libcurl4-openssl-dev pkg-config libssl-dev net-tools strace psmisc librabbitmq-dev \
-        && pecl install ds mongodb  imagick AMQP xdebug redis && docker-php-ext-enable ds mongodb  imagick amqp xdebug redis exif xmlrpc\
+        #👇👇---- 下一个版本出现了大面积的取消函数。所以不能升级了  https://pecl.php.net/package-changelog.php?package=imagick&release=3.4.3
+        && pecl install http://pecl.php.net/get/imagick-3.4.3.tgz \
+        && pecl install ds mongodb   AMQP xdebug redis && docker-php-ext-enable mysqli bcmath ds mongodb  imagick amqp xdebug redis exif xmlrpc\
         && apt-get install -y \
             libfreetype6-dev \
             libjpeg62-turbo-dev \
