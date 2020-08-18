@@ -18,6 +18,8 @@ RUN     apt-get update && apt-get -y install  libzip-dev  git librdkafka-dev unz
         && apt-get -y install libcurl4-openssl-dev pkg-config libssl-dev net-tools strace psmisc librabbitmq-dev \
         #👇👇---- 下一个版本出现了大面积的取消函数。所以不能升级了  https://pecl.php.net/package-changelog.php?package=imagick&release=3.4.3
         && pecl install http://pecl.php.net/get/imagick-3.4.3.tgz \
+        #👇👇----支持swoole
+        && pecl install swoole \
         && pecl install ds mongodb   AMQP xdebug redis && docker-php-ext-enable mysqli bcmath ds mongodb  imagick amqp xdebug redis exif xmlrpc\
         && apt-get install -y \
             libfreetype6-dev \
