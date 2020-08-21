@@ -20,7 +20,7 @@ RUN     apt-get update && apt-get -y install  libzip-dev  git librdkafka-dev unz
         && pecl install http://pecl.php.net/get/imagick-3.4.3.tgz \
         #👇👇----支持swoole
         && pecl install swoole \
-        && pecl install ds mongodb   AMQP xdebug redis && docker-php-ext-enable mysqli bcmath ds mongodb  imagick amqp xdebug redis exif xmlrpc\
+        && pecl install ds mongodb   AMQP xdebug redis && docker-php-ext-enable swoole mysqli bcmath ds mongodb  imagick amqp xdebug redis exif xmlrpc\
         && apt-get install -y \
             libfreetype6-dev \
             libjpeg62-turbo-dev \
