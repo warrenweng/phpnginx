@@ -74,6 +74,11 @@ RUN mkdir -p /usr/share/man/man1mkdir -p /usr/share/man/man1 && apt-get update &
 RUN curl -sS https://getcomposer.org/installer | php \
     && cp composer.phar /usr/bin/composer
 
+#安装hugo
+RUN wget https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_amd64.deb \
+    && dpkg -i hugo*.deb \
+    && hugo version
+
 
 RUN     cp --force /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  \
         #记录编译的日期
