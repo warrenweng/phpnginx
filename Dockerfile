@@ -75,7 +75,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && cp composer.phar /usr/bin/composer
 
 #安装hugo
-RUN wget https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_amd64.deb \
+RUN wget https://github.com/gohugoio/hugo/releases/download/v0.75.1/hugo_0.75.1_Linux-64bit.deb \
     && dpkg -i hugo*.deb \
     && hugo version
 
