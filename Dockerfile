@@ -77,7 +77,8 @@ RUN curl -sS https://getcomposer.org/installer | php \
 #安装hugo
 RUN wget https://github.com/gohugoio/hugo/releases/download/v0.75.1/hugo_0.75.1_Linux-64bit.deb \
     && dpkg -i hugo*.deb \
-    && hugo version
+    && hugo version \
+    && rm -f hugo_0.75.1_Linux-64bit.deb
 
 
 RUN     cp --force /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  \
